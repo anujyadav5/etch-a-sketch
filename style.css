@@ -1,0 +1,30 @@
+body {
+    background-color: bisque;
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+:root {
+    --grid-rows: 1;
+    --grid-columns: 1;
+}
+
+.grid-container {
+    border: 1px solid black;
+    min-width: auto;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+.grid-cell {
+    padding: 1em;
+}
+
+.colored-cell {
+    background-color: cadetblue;
+}
