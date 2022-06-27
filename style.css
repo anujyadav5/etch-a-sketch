@@ -61,3 +61,20 @@ h1 {
 #output {
     display: inline;
 }
+
+#custom-buttons {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#custom-buttons > button {
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 50px;
+    background-color: darksalmon;
+    color: indianred;
+    font-weight: bolder;
+}
