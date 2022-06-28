@@ -77,14 +77,24 @@ clearButton.onclick = () => {
 
 eraserButton.onclick = () => {
     (currentMode == 'erase')? (currentMode = DEFAULT_MODE): (currentMode = 'erase');
+    buttonClicked(eraserButton);
 }
 
 
 shaderButton.onclick = () => {
     (currentMode == 'shade')? (currentMode = DEFAULT_MODE): (currentMode = 'shade');
+    buttonClicked(shaderButton);
 }
 
+function buttonClicked(buttonID) {
+    (buttonID.style.backgroundColor == 'rgb(209, 127, 100)')? 
+        buttonID.style.backgroundColor = 'rgb(233, 150, 122)': 
+        buttonID.style.backgroundColor = 'rgb(209, 127, 100)';
 
+    (buttonID.style.transform == 'rotate(5deg)')?
+        buttonID.style.transform = '':
+        buttonID.style.transform = 'rotate(5deg)';
+}
 
 
 window.onload = () => {

@@ -14,7 +14,7 @@ body {
 }
 
 .grid-container {
-    border: 1px solid black;
+    border: 5px solid rgb(202, 57, 57);
     width: 550px;
     height: 550px;
     margin-top: 5px;
@@ -64,12 +64,29 @@ h1 {
     gap: 15px;
 }
 
-#custom-buttons > button {
+#eraser, #shader, #clear {
     border-radius: 5px;
-    border: none;
+    border: 3px solid rgb(202, 57, 57);
     width: 100px;
     height: 50px;
-    background-color: darksalmon;
-    color: indianred;
+    background-color: rgb(233, 150, 122);
+    color: black;
     font-weight: bolder;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+#eraser:hover, #shader:hover, #clear:hover {
+    background-color: rgb(209, 127, 100);
+    transform: rotate(5deg);
+}
+
+#eraser:active, #shader:active {
+    transform: translateY(4px);
+}
+
+#clear:active {
+    transform: rotate(5deg);
+    transform: translateY(4px);
+    background-color: rgb(209, 127, 100);
 }
