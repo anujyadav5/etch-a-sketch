@@ -1,5 +1,5 @@
 body {
-    background-color: bisque;
+    background-color: rgb(255, 228, 196);
     height: 100vh;
     margin: 0px;
     display: flex;
@@ -21,11 +21,6 @@ body {
     display: grid;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-columns), 1fr);
-}
-
-
-.colored-cell { /*added to cells when clicked*/
-    background-color: rgb(95, 158, 160);
 }
 
 h1 {

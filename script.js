@@ -1,5 +1,6 @@
 const DEFAULT_SIZE = 16;
 const DEFAULT_MODE = 'color';
+const BASE_COLOR = 'rgb(255, 228, 196)';
 
 const gridContainer = document.getElementsByClassName('grid-container')[0];
 const clearButton = document.getElementById('clear');
@@ -25,24 +26,34 @@ function makeGrid(size) { //generate size x size grid;
         let cell = document.createElement('div');
         cell.className = 'grid-cell';
         cell.addEventListener('mousedown', toggleCell);
-        cell.addEventListener('mouseover', toggleCell);
+        cell.addEventListener('mouseenter', toggleCell);
         gridContainer.appendChild(cell);
     }
 }
 
 
 function toggleCell(e) {
-    if((e.type == 'mouseover' && mouseDown || e.type == 'mousedown')) {
+    if((e.type == 'mouseenter' && mouseDown || e.type == 'mousedown')) {
         mouseDown=true;
         if (currentMode == DEFAULT_MODE) {
-            e.target.classList.add('colored-cell');
+            e.target.style.backgroundColor = 'rgb(95, 158, 160)';
         } else if (currentMode == 'erase') {
-            e.target.classList.remove('colored-cell');
+            e.target.style.backgroundColor = BASE_COLOR;
         } else if (currentMode == 'shade') {
-            
+            let bgColor = window.getComputedStyle(e.target).backgroundColor;
+            if (bgColor == 'rgb(95, 158, 160)') return;
+
+            let rgbAlpha = parseFloat(bgColor.slice(19, 22));
+
+            if (!rgbAlpha) {
+                e.target.style.backgroundColor =  `rgb(95, 158, 160, 0.1)`;
+            } else {
+                e.target.style.backgroundColor = `rgb(95, 158, 160, ${rgbAlpha + 0.1})`;
+            }
         }
     }
 }
+
 
 
 var slider = document.getElementById('grid-size-selector');
@@ -60,15 +71,18 @@ slider.oninput = function() {
 clearButton.onclick = () => {
     let cells = Array.from(document.getElementsByClassName('grid-cell'));
     for (let i=0; i<cells.length; i++) {
-        cells[i].classList.remove('colored-cell');
+        cells[i].style.backgroundColor = BASE_COLOR;
     }
 }
 
 eraserButton.onclick = () => {
-    (currentMode == 'erase')? (currentMode = 'color'): (currentMode = 'erase');
+    (currentMode == 'erase')? (currentMode = DEFAULT_MODE): (currentMode = 'erase');
 }
 
 
+shaderButton.onclick = () => {
+    (currentMode == 'shade')? (currentMode = DEFAULT_MODE): (currentMode = 'shade');
+}
 
 
 
