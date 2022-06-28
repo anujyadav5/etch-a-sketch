@@ -1,1 +1,2 @@
-# etch-a-sketch project done as a part of the Odin course.
+# etch-a-sketch 
+Project done as a part of the Odin course.
